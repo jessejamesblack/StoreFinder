@@ -1,0 +1,14 @@
+package com.example.demo;
+
+public class Parameters {
+	
+	public String date;
+	
+	public String price_type;
+	
+	public String company_name;
+	
+	public String email;
+
+
+}

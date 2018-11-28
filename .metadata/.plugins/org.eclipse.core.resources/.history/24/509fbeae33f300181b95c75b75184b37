@@ -1,0 +1,131 @@
+package com.example.demo;
+
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.text.MessageFormat;
+import java.util.Base64;
+
+
+@RestController
+public class dfWebhook {
+	
+	//Test Get method
+	@GetMapping("/test")
+	   public String index() {
+		return "Hello World";
+	}
+	
+	
+	
+	//Make POST request to the webhook.
+	@PostMapping("/getStocksForBot")
+	   public String botStuff(@RequestBody String payload) {
+		
+		
+		//Get the fulfillment request JSON from Dialogflow.
+		Gson gson = new Gson();
+		JsonParse jp = gson.fromJson(payload, JsonParse.class);
+		
+		
+		//get the getStockPrice intent
+		if(jp.queryResult.action.equals("input.getStockPrice") )
+		{
+			//Get the parameter data
+			String date = jp.queryResult.parameters.date;
+			String priceType = jp.queryResult.parameters.price_type;
+			String companyName = jp.queryResult.parameters.company_name.toLowerCase();
+			
+			
+			String username = "217e5e147ad693ead06cf92cbe59f753";
+			String password = "3148d7ab9dd26c3c9d6c2b10afec25bf";
+						
+			String auth = (username + ":" + password);
+			
+			String encodedString = Base64.getEncoder().encodeToString(auth.getBytes());
+			
+			
+			Map<Object, String> tickerMap = new HashMap<Object, String>();
+			tickerMap.put("apple", "AAPL");
+			tickerMap.put("microsoft", "MSFT");
+			tickerMap.put("ibm", "IBM");
+			tickerMap.put("google", "GOOG");
+			tickerMap.put("amazon", "AMZN");
+			tickerMap.put("visa", "V");
+			tickerMap.put("infosys", "INFY");
+			tickerMap.put("tesla", "TSLA");
+			tickerMap.put("snapchat", "SNAP");
+			tickerMap.put("facebook", "FB");
+		      
+		    Map<Object,String> priceMap = new HashMap<Object,String>(); 
+		    priceMap.put("opening", "open_price");
+		    priceMap.put("closing", "close_price");
+		    priceMap.put("maximum", "high_price");
+		    priceMap.put("high", "high_price");
+		    priceMap.put("low", "low_price");
+		    priceMap.put("minimum", "low_price");
+		      
+		    String stockTicker = tickerMap.get(companyName);
+		    String priceTypeCode = priceMap.get(priceType);
+		    
+		    System.out.println(stockTicker);
+		    System.out.println(priceTypeCode);
+		    
+		    //setup url
+		    Object[] params = new Object[]{stockTicker,priceTypeCode,date};
+		    String msg = MessageFormat.format("https://api.intrinio.com//historical_data?ticker={0}&item={1}&start_date={2}&end_date={2}", params);
+		       
+    
+		    //setup API call to Intrinio
+		    
+		    final String uri = msg;
+		    HttpHeaders headers = new HttpHeaders();
+		    headers.add("Authorization","Basic " + encodedString);
+		    RestTemplate restTemplate = new RestTemplate();
+		    HttpEntity<String> request = new HttpEntity<String>(headers);
+		    ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
+		    
+		    
+		    String test = response.getBody();
+		    		    
+		    StockData sd = gson.fromJson(test, StockData.class);
+		    
+		    String stockPrice = sd.data[0].value;
+		    
+		    //setup the chatbot's response back to the user
+		    String chat = " The " + priceType + " price for " + companyName + " on " + date + " was $" + stockPrice +".";
+		    
+		    System.out.println(chat);
+		    
+		    //Dialogflow V2 requires the fufillment response come back as fulfillmentText.
+		    JsonObject chatConvert = new JsonObject();
+		    chatConvert.addProperty("fulfillmentText", chat);
+		    
+		    String responsePayload = gson.toJson(chatConvert);
+		    
+		    //Return to DialogFlow
+		    return responsePayload;
+		    		      
+		}
+		else
+		{
+			System.out.println("Oof");
+			return "oof";
+		}
+		
+
+	}
+
+}
