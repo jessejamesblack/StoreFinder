@@ -1,0 +1,9 @@
+package com.example.demo;
+
+public class LocationReturn {
+	
+	public String formatted_address;
+	public Object[] results;
+	public Object queryResult;
+
+}

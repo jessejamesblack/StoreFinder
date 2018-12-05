@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -25,34 +28,51 @@ public class webhook {
 //	}
 
 	// Make post request to Dialogflow
-	@RequestMapping(value="pwned", method = RequestMethod.POST)
+	@PostMapping("/locate")
 	public String getPwnedStatus(@RequestBody String payload) {
 		// Get the fulfillment request JSON from Dialogflow
 		Gson gson = new Gson();
 		JsonParse jp = gson.fromJson(payload, JsonParse.class);
 		
 		
+		
+		
 		// Get the response from pwned Dialogflow intent
 		if(jp.queryResult.action.equals("input.breach")) {
 			// Set up the url
-			String email = jp.queryResult.parameters.email;
-			String url = "https://haveibeenpwned.com/api/v2/breachedaccount/".concat(email);
+			String location = jp.queryResult.parameters.any;
 			
+			System.out.println(location.getBytes());
+			String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=verizon+stores+in+"+ location+"&key=AIzaSyCLxbkVfza9_-cbIf6AUzQGnpC0Vhbsxzc";
+	
 			// Setup the API call to haveibeenpwned 
 			final String uri = url;
 			HttpHeaders headers = new HttpHeaders();
-			headers.add("User-Agent", "HaveIBeenPwndJava-v2");
+			headers.add("User-Agent", uri);
 			RestTemplate restTemplate = new RestTemplate();
 			HttpEntity<String> request = new HttpEntity<String>(headers);
 			ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
 			
 			String res = response.getBody();
 			
-			System.out.println(res);
-			// Return to Dialogdflow
+			//System.out.println(res);
+			// Return to Dialogflow
 			JsonObject chatConvert = new JsonObject();
-			chatConvert.addProperty("fulfillmentText", res);
+			LocationData ld = gson.fromJson(res, LocationData.class);
 			
+			String address = ld.results[0].formatted_address;
+			String address2 = "";
+			String address3 = "";
+			if(ld.results.length > 2) {
+				address2 = ld.results[1].formatted_address;
+				address3 = ld.results[2].formatted_address;
+			}
+			
+			System.out.println(address + " " + address2 + " " + address3);
+			
+			
+			
+			chatConvert.addProperty("fulfillmentText", address + " " + address2 + " " + address3);
 			String responsePayload = gson.toJson(chatConvert);
 			return responsePayload;
 		}
