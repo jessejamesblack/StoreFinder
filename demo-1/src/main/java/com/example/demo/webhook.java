@@ -1,51 +1,55 @@
 package com.example.demo;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 @RestController
 public class webhook {
-	
-	// Test Get method
-//	@RequestMapping(method = RequestMethod.GET)
-//	public String index() {
-//		return "Hello";
-//	}
 
-	// Make post request to Dialogflow
-	@PostMapping("/locate")
-	public String getPwnedStatus(@RequestBody String payload) {
-		// Get the fulfillment request JSON from Dialogflow
-		Gson gson = new Gson();
-		JsonParse jp = gson.fromJson(payload, JsonParse.class);
+	@PostMapping("/getLocationForBot")
+	   public String botStuff(@RequestBody String payload) {
+		
+		final double MILES = 10.00;
+		int flag = 0;
+		List<String> results = new ArrayList<String>();
 		
 		
+		//Get the fulfillment request JSON from Dialogflow.
+		JsonParser parser = new JsonParser();
+		JsonObject rootObj = parser.parse(payload).getAsJsonObject();
+		JsonObject locObj = rootObj.getAsJsonObject("queryResult");
 		
-		
-		// Get the response from pwned Dialogflow intent
-		if(jp.queryResult.action.equals("input.breach")) {
-			// Set up the url
-			String location = jp.queryResult.parameters.any;
+		String action = locObj.get("action").getAsString();
 			
-			System.out.println(location.getBytes());
-			String url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query=verizon+stores+in+"+ location+"&key=AIzaSyCLxbkVfza9_-cbIf6AUzQGnpC0Vhbsxzc";
-	
-			// Setup the API call to haveibeenpwned 
+		if(action.equals("input.breach") )
+		{
+			JsonObject myLocation = getUser();
+			double myLat = myLocation.get("lat").getAsDouble();
+			double myLng = myLocation.get("lng").getAsDouble();
+			
+			System.out.println(myLat + myLng);
+			
+			
+			// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
+			String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+myLat+","+myLng+"&rankby=distance&type=store&keyword=verizon+wireless&fields=vicinity&key=AIzaSyCLxbkVfza9_-cbIf6AUzQGnpC0Vhbsxzc";
+			
 			final String uri = url;
 			HttpHeaders headers = new HttpHeaders();
 			headers.add("User-Agent", uri);
@@ -54,32 +58,116 @@ public class webhook {
 			ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
 			
 			String res = response.getBody();
+			System.out.println(res);
 			
-			//System.out.println(res);
-			// Return to Dialogflow
-			JsonObject chatConvert = new JsonObject();
-			LocationData ld = gson.fromJson(res, LocationData.class);
 			
-			String address = ld.results[0].formatted_address;
-			String address2 = "";
-			String address3 = "";
-			if(ld.results.length > 2) {
-				address2 = ld.results[1].formatted_address;
-				address3 = ld.results[2].formatted_address;
+			JsonObject googleObj = parser.parse(res).getAsJsonObject();
+			JsonArray resultObj = googleObj.get("results").getAsJsonArray();
+			
+			if(resultObj.size() == 0)
+			{
+				JsonObject chatConvert = new JsonObject();
+			    chatConvert.addProperty("fulfillmentText", "No stores nearby");
+		    
+			    Gson gson = new Gson();
+			    String responsePayload = gson.toJson(chatConvert);
+			    
+			    return responsePayload;
+				
 			}
 			
-			System.out.println(address + " " + address2 + " " + address3);
+			for(JsonElement x : resultObj)
+			{
+
+				JsonObject locationObj = x.getAsJsonObject();
+				JsonObject geo = locationObj.getAsJsonObject("geometry");
+				JsonObject loc = geo.getAsJsonObject("location");
+				
+				String address = locationObj.get("vicinity").getAsString();
+				double latitude = loc.get("lat").getAsDouble();
+				double longitude = loc.get("lng").getAsDouble();
+				
+				
+				// calculate distance then get locations that are within 10 miles.
+				LocationData currentPos = new LocationData("Current Position",myLat,myLng);
+				LocationData toPos = new LocationData(address,latitude,longitude);
+				
+				double result = currentPos.distanceTo(toPos);
+				
+				result = round(result,2);
+				
+				
+				if(result <= MILES && flag <= 2)
+				{
+					//System.out.println(address + " is " + result + " miles.");
+					String place = address + " is " + result + " miles away";
+					
+					results.add(place);
+
+					flag+= 1;
+					
+				}
+				else if(result > MILES && flag <= 2)
+				{
+					String place = address + " is " + result + " miles away";
+					
+					results.add(place);
+
+					flag+= 1;
+				}
+				
+				if(flag > 2)
+				{
+					break;
+				}
+				
+			}
 			
+			System.out.println(results.size());
 			
-			
-			chatConvert.addProperty("fulfillmentText", address + " " + address2 + " " + address3);
-			String responsePayload = gson.toJson(chatConvert);
-			return responsePayload;
+			String text = results.toString().replace("[", "").replace("]", "");	
+			JsonObject chatConvert = new JsonObject();
+		    chatConvert.addProperty("fulfillmentText", text);
+		    
+		    Gson gson = new Gson();
+		    String responsePayload = gson.toJson(chatConvert);
+		    
+		    return responsePayload;
+				
 		}
-		else {
-			return "Error has occured";
+		else
+		{
+			System.out.println("Oof");
+			return "oof";
 		}
+	}
+	
+	public static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
+	
+	//THANKS ERICK!!!!!!!!
+	private JsonObject  getUser()
+	{
+		final String url = "https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyANdovJScv42vcUDrkbe51-Ka0sKiWvI2M";
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("user-agent", url);
+		RestTemplate restTemplate = new RestTemplate(); 
+		HttpEntity<String> request = new HttpEntity<String>(headers);
+		ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.POST, request, String.class);
+		String api_response = response.getBody();
+		JsonParser parser = new JsonParser();
+		JsonObject rootObj = parser.parse(api_response).getAsJsonObject();
+		JsonObject locObj = rootObj.getAsJsonObject("location");
+		System.out.println(api_response);
 		
+		return locObj;
 		
 	}
+	
+	
 }
