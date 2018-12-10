@@ -1,0 +1,7 @@
+package com.example.demo;
+
+public class LocationData2 {
+	Results[] result;
+	public Object[] results;
+
+}

@@ -35,6 +35,11 @@ public class webhook {
 		JsonParser parser = new JsonParser();
 		JsonObject rootObj = parser.parse(payload).getAsJsonObject();
 		JsonObject locObj = rootObj.getAsJsonObject("queryResult");
+		JsonObject params = locObj.getAsJsonObject("parameters");
+		String location = params.get("any").getAsString();
+		System.out.println(locObj);
+		System.out.println(location);
+		
 		
 		String action = locObj.get("action").getAsString();
 			
@@ -44,11 +49,46 @@ public class webhook {
 			double myLat = myLocation.get("lat").getAsDouble();
 			double myLng = myLocation.get("lng").getAsDouble();
 			
-			System.out.println(myLat + myLng);
+			//System.out.println(myLat + myLng);
+			
+			if(!location.equals("")) {
+				// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
+				System.out.println(location);
+				String url = "https://maps.googleapis.com/maps/api/geocode/json?address="+location+"&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+				final String uri = url;
+				HttpHeaders headers = new HttpHeaders();
+				headers.add("User-Agent", uri);
+				RestTemplate restTemplate = new RestTemplate();
+				HttpEntity<String> request = new HttpEntity<String>(headers);
+				ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
+				
+				String res = response.getBody();
+				System.out.println(res);
+				
+				
+				JsonObject googleObj = parser.parse(res).getAsJsonObject();
+				JsonArray resultObj = googleObj.get("results").getAsJsonArray();
+				
+				
+				
+				
+				for(JsonElement x : resultObj)
+				{
+
+					JsonObject locationObj = x.getAsJsonObject();
+					JsonObject geo = locationObj.getAsJsonObject("geometry");
+					JsonObject loc = geo.getAsJsonObject("location");
+					
+					myLat = loc.get("lat").getAsDouble();
+					myLng = loc.get("lng").getAsDouble();
+					
+				}
+				
+			}
 			
 			
 			// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
-			String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+myLat+","+myLng+"&rankby=distance&type=store&keyword=verizon+wireless&fields=vicinity&key=AIzaSyCLxbkVfza9_-cbIf6AUzQGnpC0Vhbsxzc";
+			String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+myLat+","+myLng+"&rankby=distance&type=store&keyword=verizon+wireless&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
 			
 			final String uri = url;
 			HttpHeaders headers = new HttpHeaders();
@@ -58,7 +98,7 @@ public class webhook {
 			ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
 			
 			String res = response.getBody();
-			System.out.println(res);
+			//System.out.println(res);
 			
 			
 			JsonObject googleObj = parser.parse(res).getAsJsonObject();
@@ -75,6 +115,7 @@ public class webhook {
 			    return responsePayload;
 				
 			}
+			
 			
 			for(JsonElement x : resultObj)
 			{
