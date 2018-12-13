@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<list key="EGit.KnownHosts">
-		<item value="bitbucket.org"/>
-		<item value="git.eclipse.org"/>
 		<item value="github.com"/>
+		<item value="git.eclipse.org"/>
+		<item value="bitbucket.org"/>
 		<item value="infygit.ad.infosys.com"/>
 	</list>
 	<list key="RepositorySelectionPage.UsedUris">
@@ -26,6 +26,10 @@
 			<item value="600"/>
 			<item value="400"/>
 		</list>
+	</section>
+	<section name="org.eclipse.egit.ui.internal.pull.PullResultDialog.dialogBounds">
+		<item value="537" key="DIALOG_X_ORIGIN"/>
+		<item value="245" key="DIALOG_Y_ORIGIN"/>
 	</section>
 	<section name="GitCommitMessageComponent">
 		<list key="C:\Users\jessejames.black\git\HaveYouBeenPwned\.git">

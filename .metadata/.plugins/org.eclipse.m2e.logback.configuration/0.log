@@ -5734,3 +5734,91 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact com.github.nb
 2018-12-10 13:07:26,561 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
 2018-12-10 13:07:26,563 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
 2018-12-10 13:07:26,567 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:07:26,569 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:07:26,570 [Worker-54: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-10 13:55:53,365 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:55:53,368 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:55:53,371 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:55:53,374 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:55:53,374 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-10 13:55:55,693 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:55:55,695 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:55:55,699 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:55:55,701 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:55:55,702 [Worker-80: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-10 13:56:02,630 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:56:02,633 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:56:02,637 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:56:02,640 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:56:02,640 [Worker-82: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-10 13:56:07,474 [Worker-81: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:56:07,476 [Worker-81: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:56:07,479 [Worker-81: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-10 13:56:07,481 [Worker-81: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-10 13:56:07,481 [Worker-81: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-11 13:05:33,537 [Worker-7: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-12-11 13:05:38,430 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:38,449 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:38,467 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:38,519 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:38,520 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-11 13:05:42,358 [Worker-6: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: com.example:demo-1:0.0.1-SNAPSHOT @ C:\Users\jessejames.black\Documents\spring\demo-1\pom.xml.
+2018-12-11 13:05:44,405 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:44,413 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:44,429 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:44,438 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:44,438 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-11 13:05:46,355 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:46,358 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:46,362 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:46,368 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:46,369 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-11 13:05:47,428 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:47,431 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:47,434 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:47,440 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:47,441 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-11 13:05:48,798 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:48,801 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:48,820 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 1 resource
+2018-12-11 13:05:48,826 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:05:48,827 [Worker-6: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\demo-1\src\test\resources
+2018-12-11 13:06:24,007 [Worker-10: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: io.javascript.springbootquickstart:course-api:0.0.1-SNAPSHOT @ C:\Users\jessejames.black\Documents\spring\course-api\pom.xml.
+2018-12-11 13:06:27,221 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:06:27,222 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\course-api\src\main\resources
+2018-12-11 13:06:27,222 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\course-api\src\main\resources
+2018-12-11 13:06:27,226 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:06:27,226 [Worker-10: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\course-api\src\test\resources
+2018-12-11 13:06:29,022 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:06:29,023 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\course-api\src\main\resources
+2018-12-11 13:06:29,023 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\course-api\src\main\resources
+2018-12-11 13:06:29,025 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:06:29,026 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\spring\course-api\src\test\resources
+2018-12-11 13:10:56,789 [ModalContext] INFO  o.e.jgit.transport.TransportHttp - URI 'http://infygit.ad.infosys.com/jessejames.black/breachchecker': following HTTP redirect #0  http://infygit.ad.infosys.com/jessejames.black/breachchecker/ -> http://infygit.ad.infosys.com/jessejames.black/breachchecker.git/
+2018-12-11 13:11:38,969 [ModalContext] INFO  o.e.jgit.transport.TransportHttp - URI 'http://infygit.ad.infosys.com/jessejames.black/breachchecker': following HTTP redirect #0  http://infygit.ad.infosys.com/jessejames.black/breachchecker/ -> http://infygit.ad.infosys.com/jessejames.black/breachchecker.git/
+2018-12-11 13:12:00,954 [Worker-11: Cloning from http://infygit.ad.infosys.com/jessejames.black/breachchecker] INFO  o.e.jgit.transport.TransportHttp - URI 'http://infygit.ad.infosys.com/jessejames.black/breachchecker': following HTTP redirect #0  http://infygit.ad.infosys.com/jessejames.black/breachchecker/ -> http://infygit.ad.infosys.com/jessejames.black/breachchecker.git/
+2018-12-11 13:13:37,193 [Worker-7: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-12-11 13:16:47,088 [Worker-2: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-12-11 13:16:47,755 [Worker-3: Building workspace] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: io.javascript.springbootquickstart:course-api:0.0.1-SNAPSHOT @ C:\Users\jessejames.black\Documents\breachchecker\course-api\pom.xml.
+2018-12-11 13:16:50,842 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:16:50,842 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:16:50,842 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:16:50,846 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:16:50,846 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\test\resources
+2018-12-11 13:16:52,977 [Worker-5: Updating Maven Dependencies] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.eclipse.m2e.jdt.JarLifecycleMapping lifecycle mapping for MavenProject: io.javascript.springbootquickstart:course-api:0.0.1-SNAPSHOT @ C:\Users\jessejames.black\Documents\breachchecker\course-api\pom.xml.
+2018-12-11 13:16:53,982 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:16:53,983 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:16:53,983 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:16:53,987 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:16:53,987 [Worker-3: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\test\resources
+2018-12-11 13:16:55,718 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:16:55,719 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:16:55,719 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:16:55,723 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:16:55,723 [Worker-7: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\test\resources
+2018-12-11 13:17:39,940 [Worker-0: Loading available Gradle versions] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache is up-to-date. Trying to read.
+2018-12-11 13:17:47,105 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:17:47,106 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:17:47,106 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\main\resources
+2018-12-11 13:17:47,110 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-12-11 13:17:47,110 [Worker-8: Building workspace] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\jessejames.black\Documents\breachchecker\course-api\src\test\resources

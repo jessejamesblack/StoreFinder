@@ -1,8 +1,0 @@
-package com.example.demo;
-
-public class LocationData2 {
-	Results[] result;
-	public Results[] results;
-	public String formatted_address;
-
-}
