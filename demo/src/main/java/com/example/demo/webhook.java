@@ -28,17 +28,17 @@ public class webhook {
 		
 		final double MILES = 10.00;
 		int flag = 0;
-		List<String> results = new ArrayList<String>();
-			
+		String results="";
 		//Get the fulfillment request JSON from Dialogflow.
 		JsonParser parser = new JsonParser();
 		JsonObject rootObj = parser.parse(payload).getAsJsonObject();
 		JsonObject locObj = rootObj.getAsJsonObject("queryResult");
 		JsonObject params = locObj.getAsJsonObject("parameters");
 		String location = params.get("any").getAsString();
+		//System.out.println(locObj);
+		//System.out.println(location);
 		System.out.println(locObj);
 		System.out.println(location);	
-		
 		String action = locObj.get("action").getAsString();
 			
 		if(action.equals("input.breach") )
@@ -92,7 +92,7 @@ public class webhook {
 			ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
 			
 			String res = response.getBody();
-			//System.out.println(res);
+			System.out.println(res);
 			
 			
 			JsonObject googleObj = parser.parse(res).getAsJsonObject();
@@ -135,19 +135,19 @@ public class webhook {
 				if(result <= MILES && flag <= 2)
 				{
 					//System.out.println(address + " is " + result + " miles.");
-					String place = address + " is " + result + " miles away";
+					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  + "}\n";
 					
-					results.add(place);
-
+					results+=(place);
+					System.out.println(results);
 					flag+= 1;
 					
 				}
 				else if(result > MILES && flag <= 2)
 				{
-					String place = address + " is " + result + " miles away";
+					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  + "}\n";
 					
-					results.add(place);
-
+					results+=(place);
+					System.out.println(results);
 					flag+= 1;
 				}
 				
@@ -158,7 +158,7 @@ public class webhook {
 				
 			}
 			
-			System.out.println(results.size());
+//			System.out.println(results.size());
 			
 			String text = results.toString().replace("[", "").replace("]", "");	
 			JsonObject chatConvert = new JsonObject();
