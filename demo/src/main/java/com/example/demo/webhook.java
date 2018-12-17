@@ -117,11 +117,17 @@ public class webhook {
 				JsonObject locationObj = x.getAsJsonObject();
 				JsonObject geo = locationObj.getAsJsonObject("geometry");
 				JsonObject loc = geo.getAsJsonObject("location");
-				
+				JsonArray photosObj = locationObj.getAsJsonArray("photos");
+				String photo_reference = "";
+				for(JsonElement y : photosObj) {
+					JsonObject photos = y.getAsJsonObject();
+					photo_reference = photos.get("photo_reference").getAsString();
+				}
 				String address = locationObj.get("vicinity").getAsString();
 				double latitude = loc.get("lat").getAsDouble();
 				double longitude = loc.get("lng").getAsDouble();
 				
+
 				
 				// calculate distance then get locations that are within 10 miles.
 				LocationData currentPos = new LocationData("Current Position",myLat,myLng);
@@ -129,25 +135,25 @@ public class webhook {
 				
 				double result = currentPos.distanceTo(toPos);
 				
+				
 				result = round(result,2);
 				
 				
 				if(result <= MILES && flag <= 2)
 				{
 					//System.out.println(address + " is " + result + " miles.");
-					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  + "}\n";
+					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  +","+"\"photo_reference\":"+ "\"" +photo_reference+"\""  + "}\n";
 					
 					results+=(place);
-					System.out.println(results);
+					//System.out.println(results);
 					flag+= 1;
 					
 				}
 				else if(result > MILES && flag <= 2)
 				{
-					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  + "}\n";
-					
+					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  +","+"\"photo_reference\":"+ "\"" +photo_reference+"\""  + "}\n";
 					results+=(place);
-					System.out.println(results);
+					//System.out.println(results);
 					flag+= 1;
 				}
 				
