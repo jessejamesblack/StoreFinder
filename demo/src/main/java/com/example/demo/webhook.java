@@ -118,6 +118,9 @@ public class webhook {
 				JsonObject geo = locationObj.getAsJsonObject("geometry");
 				JsonObject loc = geo.getAsJsonObject("location");
 				JsonArray photosObj = locationObj.getAsJsonArray("photos");
+				JsonObject opening_hours = locationObj.getAsJsonObject("opening_hours");
+				Boolean open_now = opening_hours.get("open_now").getAsBoolean();
+				//System.out.println(open_now);
 				String photo_reference = "";
 				for(JsonElement y : photosObj) {
 					JsonObject photos = y.getAsJsonObject();
@@ -142,7 +145,7 @@ public class webhook {
 				if(result <= MILES && flag <= 2)
 				{
 					//System.out.println(address + " is " + result + " miles.");
-					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  +","+"\"photo_reference\":"+ "\"" +photo_reference+"\""  + "}\n";
+					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  +","+"\"photo_reference\":"+ "\"" +photo_reference+"\""+","+"\"open_now\":"+ "\"" +open_now+"\""  + "}\n";
 					
 					results+=(place);
 					//System.out.println(results);
@@ -151,7 +154,7 @@ public class webhook {
 				}
 				else if(result > MILES && flag <= 2)
 				{
-					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  +","+"\"photo_reference\":"+ "\"" +photo_reference+"\""  + "}\n";
+					String place ="{\"address\":"+ "\"" + address+ "\"" +","+"\"distance\":"+ "\"" +result+"\""  +","+"\"photo_reference\":"+ "\"" +photo_reference+"\""+","+"\"open_now\":"+ "\"" +open_now+"\""  + "}\n";
 					results+=(place);
 					//System.out.println(results);
 					flag+= 1;
