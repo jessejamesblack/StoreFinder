@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.example.demo.LocationData;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -42,7 +43,7 @@ public class webhook {
 		System.out.println(location);
 		String action = locObj.get("action").getAsString();
 
-		if (action.equals("input.breach")) {
+		if (action.equals("input.storeFinder")) {
 			try {
 				JsonObject myLocation = getUser();
 				double myLat = myLocation.get("lat").getAsDouble();
