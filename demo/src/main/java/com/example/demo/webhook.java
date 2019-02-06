@@ -38,7 +38,7 @@ public class webhook {
 		JsonObject params = locObj.getAsJsonObject("parameters");
 		String location = params.get("any").getAsString();
 		String storeLocation = params.get("store").getAsString();
-		System.out.println("here" + storeLocation);
+		System.out.println("Store: " + storeLocation);
 		// System.out.println(locObj);
 		// System.out.println(location);
 		System.out.println(locObj);
@@ -53,7 +53,7 @@ public class webhook {
 
 				// System.out.println(myLat + myLng);
 
-				if (!location.equals("")) {
+				if (!location.equals("") ) {
 					// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
 					System.out.println(location);
 					String url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + location
@@ -83,11 +83,22 @@ public class webhook {
 					}
 
 				}
-
+				String url = "";
 				// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
-				String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + myLat + ","
-						+ myLng
-						+ "&rankby=distance&type=store&keyword=" + storeLocation + "&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+				if(!storeLocation.equals("")) {
+					url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + myLat + ","
+							+ myLng
+							+ "&rankby=distance&type=store&keyword=" + storeLocation + "&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+				}
+				else {
+					storeLocation = "store";
+					url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + myLat + ","
+							+ myLng
+							+ "&rankby=distance&type=store&keyword=" + storeLocation + "&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+				}
+
+				
+				
 
 				final String uri = url;
 				HttpHeaders headers = new HttpHeaders();
