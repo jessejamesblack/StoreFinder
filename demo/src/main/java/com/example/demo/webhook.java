@@ -37,6 +37,8 @@ public class webhook {
 		JsonObject locObj = rootObj.getAsJsonObject("queryResult");
 		JsonObject params = locObj.getAsJsonObject("parameters");
 		String location = params.get("any").getAsString();
+		String storeLocation = params.get("store").getAsString();
+		System.out.println("here" + storeLocation);
 		// System.out.println(locObj);
 		// System.out.println(location);
 		System.out.println(locObj);
@@ -85,7 +87,7 @@ public class webhook {
 				// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
 				String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + myLat + ","
 						+ myLng
-						+ "&rankby=distance&type=store&keyword=verizon+wireless&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+						+ "&rankby=distance&type=store&keyword=" + storeLocation + "&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
 
 				final String uri = url;
 				HttpHeaders headers = new HttpHeaders();
