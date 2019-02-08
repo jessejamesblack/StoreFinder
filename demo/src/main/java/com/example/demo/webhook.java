@@ -85,16 +85,17 @@ public class webhook {
 				}
 				String url = "";
 				// put cords here CAN ONLY SEARCH UP TO 50,000 OR 31.0 MILES
-				if(!storeLocation.equals("")) {
+				if(!storeLocation.equals("stores")) {
 					url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + myLat + ","
 							+ myLng
 							+ "&rankby=distance&type=store&keyword=" + storeLocation + "&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+					System.out.println(url);
 				}
 				else {
-					storeLocation = "store";
 					url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + myLat + ","
 							+ myLng
 							+ "&rankby=distance&type=store&keyword=" + storeLocation + "&fields=vicinity&key=AIzaSyCrAI0t16uFey968ug2LKydc7NBqGOIkIQ";
+					System.out.println(url);
 				}
 
 				
@@ -108,7 +109,7 @@ public class webhook {
 				ResponseEntity<String> response = restTemplate.exchange(uri, HttpMethod.GET, request, String.class);
 
 				String res = response.getBody();
-				System.out.println(res);
+				//System.out.println(res);
 
 				JsonObject googleObj = parser.parse(res).getAsJsonObject();
 				JsonArray resultObj = googleObj.get("results").getAsJsonArray();
